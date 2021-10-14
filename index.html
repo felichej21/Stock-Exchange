@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Exchange</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/c91f4d4f4a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    
+  </head>
+
+  <body
+    class="w-100 d-flex justify-content-center flex-column align-items-center"
+  >
+    <div class="ticker-container" id="ticker-container"></div>
+    <div class="page-wrapper">
+      <h1 class="title d-flex justify-content-center text-white">
+        <img src="./photos/logo.png">
+      </h1>
+      <div class="main-card">
+        <div id="form"></div>
+        <div id="results" class="results"></div>
+      </div>
+    </div>
+    <script type="module" src="./js/Marquee.js"></script>
+    <script type="module" src="./js/SearchResult.js"></script>
+    <script type="module" src="./js/SearchForm.js"></script>
+    <script type="module" src="./js/api.js"></script>
+    <script type="module">
+      import Marquee from "./js/Marquee.js";
+      import SearchResult from "./js/SearchResult.js";
+      import SearchForm from "./js/SearchForm.js";
+
+      const marquee1 = new Marquee(document.getElementById("ticker-container"));
+      marquee1.load();
+      const form = new SearchForm(document.getElementById("form"));
+      const results = new SearchResult(document.getElementById("results"));
+      form.onSearch((companies) => results.renderResults(companies));
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
